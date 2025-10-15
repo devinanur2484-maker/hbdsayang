@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ucapan Ulang Tahun 💗</title>
+  <style>
+    :root {
+      --bg:#FFF7FB;
+      --card:#ffffff;
+      --accent:#ff7fbf;
+      --muted:#6b6b6b;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box;}
+    body {
+      margin:0;
+      font-family: "Segoe UI", Roboto, system-ui, Arial;
+      background:linear-gradient(180deg,#fff0f6 0%,#fffaf0 100%);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      overflow:hidden;
+    }
+    .card {
+      width: 90%;
+      max: width 900px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+      position:relative;
+      animation: fadeIn 2s ease;
+      z-index:2;
+    }
+    @keyframes fadeIn {
+      from{opacity:0; transform:scale(0.95);}
+      to{opacity:1; transform:scale(1);}
+    }
+    h1 {
+      font-size:22px;
+      color:#ff4d97;
+      text-align:left;
+      animation: slideIn 1.6s ease;
+    }
+    @keyframes slideIn {
+      from{opacity:0; transform:translateY(20px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+    .grid {
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:20px;
+    }
+    @media(max-width:800px){
+      .grid{grid-template-columns:1fr;}
+    }
+    .photo-frame {
+      width:100%;
+      height:320px;
+      border-radius:16px;
+      overflow:hidden;
+      background:linear-gradient(180deg,#ffeef8,#fff7fb);
+      box-shadow:0 8px 20px rgba(255,127,191,0.12);
+      border:6px solid rgba(255,255,255,0.85);
+      animation: floatPhoto 4s ease-in-out infinite;
+    }
+    @keyframes floatPhoto {
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+    }
+    .photo-frame img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .text {
+      white-space:pre-wrap;
+      background:#fff9fc;
+      border-radius:12px;
+      padding:14px;
+      border:1px solid #ffe0f0;
+      line: height 1em;;
+      font: size 12px;px;
+      color:#222;
+      animation: fadeInText 3s ease;
+    }
+    @keyframes fadeInText {
+      from{opacity:0;}
+      to{opacity:1;}
+    }
+    .signature {
+      margin-top:12px;
+      text-align:right;
+      font-weight:700;
+      color:#b02e69;
+    }
+    /* Confetti canvas */
+    canvas.confetti {
+      position:fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      pointer-events:none;
+      z-index:1;
+    }
+  </style>
+</head>
+<body>
+  <canvas class="confetti"></canvas>
+  <div class="card">
+    <div class="grid">
+<div class="left">
+        <div class="photo-frame">
+          <img id="foto sayang" alt="Foto sayang" src="foto sayang.jpg">
+>
+        </div>      
+      </div>
+      <div class="right">
+        <h1>haiiii sayaanggg 💗</h1>
+        <div class="text">
+happy brithdayyy yaa😊💗
+semogaa panjang umurr, sehatt selalu sayanggg....
+akan selalu doakan semogaa semua harapan dan cita² sayang bisa terwujud yaa😊🌷
+amin...
+sayangg....
+aku minta maaf yaa karena telat ngucapin, mungkin sudah di ucapin duluan sama temen² kamu ya,, samaa, aku minta maaf banget sayang belum bisaa ngasih kado atau ngerayaain yang romantiss ke kamu🥺
+aku minta maaf sekali lagii, belum bisa ngewujudkan itu🥺
+sebelumnya, aku mau ucapin terimakasih banget ya sayangku karena sudah selalu sabar sama aku yang kurang ngertiin kamu. terimakasih juga sudah selalu meluangkan waktunya di tengah kesibukan mu sayang🥺. terimakasih juga udaa menerima aku apa adanya dan, terimaksih atas segala hal baik yang udah kamu beri buat aku sayang🥺💗
+semangat ber proses ya sayang...
+kalo lagi ada masalah atau mau ceritaaa, ayo cerita bareng sayang🥺 kalo memang belum punya waktu yang pas ya nggapapa, tapi ayo sekali² kita bicaraa bareng²😊
+semangatt selalu yaa sayang jaga kesehatan jugaaaa...😊💗
+i ♡ u💗💗
+        </div>
+        <div class="signature">— Dari aku untuk kamu 💗</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // ====== efek konfeti lembut ======
+  const canvas = document.querySelector('.confetti');
+  const ctx = canvas.getContext('2d');
+  let W = window.innerWidth;
+  let H = window.innerHeight;
+  canvas.width = W;
+  canvas.height = H;
+
+  const confetti = [];
+  const colors = ['#ff99c8','#ffb6d9','#ffd6e9','#ffedf3','#fff7fa'];
+  const maxConfetti = 100;
+
+  function randomRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  for (let i=0;i<maxConfetti;i++){
+    confetti.push({
+      x: Math.random() * W,
+      y: Math.random() * H - H,
+      r: randomRange(4,10),
+      color: colors[Math.floor(Math.random()*colors.length)],
+      tilt: randomRange(-10,10),
+      tiltAngleIncrement: randomRange(0.05,0.12),
+      tiltAngle: Math.random()*Math.PI
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    confetti.forEach(c=>{
+      ctx.beginPath();
+      ctx.fillStyle = c.color;
+      ctx.ellipse(c.x, c.y, c.r, c.r/2, c.tilt, 0, Math.PI*2);
+      ctx.fill();
+    });
+    update();
+    requestAnimationFrame(draw);
+  }
+
+  function update(){
+    confetti.forEach(c=>{
+      c.tiltAngle += c.tiltAngleIncrement;
+      c.y += 2;
+      c.x += Math.sin(c.tiltAngle)*1.5;
+      if(c.y > H){
+        c.y = -10;
+        c.x = Math.random()*W;
+      }
+    });
+  }
+
+  window.addEventListener('resize', ()=>{
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
+  });
+
+  draw();
+  </script>
+</body>
+</html>
